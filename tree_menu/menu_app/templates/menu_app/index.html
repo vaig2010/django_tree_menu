@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Example</title>
+    <style>
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin: 5px 0; }
+        .submenu { margin-left: 20px; display: none; }
+    </style>
+</head>
+<body>
+    <h1>Menu Example</h1>
+    {% load menu_tags %}
+    {% draw_menu 'main_menu' %}
+
+ <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function toggleMenu(event) {
+            // Get the submenu element (next sibling)
+            let submenu = this.nextElementSibling;
+
+            // Check if submenu exists and is a UL element
+            if (submenu && submenu.tagName === 'UL') {
+                // Determine if submenu is currently visible
+                const isCurrentlyVisible = submenu.style.display === 'block' || getComputedStyle(submenu).display === 'block';
+
+                // Toggle the display state
+                if (isCurrentlyVisible) {
+                    submenu.style.display = 'none'; // Hide if currently visible
+                } else {
+                    submenu.style.display = 'block'; // Show if currently hidden
+                }
+
+                // Prevent default behavior only if submenu is being toggled
+                event.preventDefault();
+            }
+        }
+
+        // Attach the toggle function to all menu links
+        document.querySelectorAll('li > a').forEach(function(link) {
+            link.addEventListener('click', toggleMenu);
+        });
+    });
+</script>
+</body>
+</html>
