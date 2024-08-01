@@ -1,17 +1,24 @@
 from django.db import models
-from django.urls import reverse
+
+class Menu(models.Model):
+    name = models.CharField('Название меню', max_length=255)
+
+    class Meta:
+        verbose_name = 'Главное меню'
+        verbose_name_plural = 'Главные меню'
+
+    def __str__(self):
+        return self.name
 
 class MenuItem(models.Model):
-    name = models.CharField(max_length=100)
-    url = models.CharField(max_length=100, blank=True, null=True)
-    named_url = models.CharField(max_length=100, blank=True, null=True)
-    parent = models.ForeignKey('self', null=True, blank=True, related_name='children', on_delete=models.CASCADE)
-    menu_name = models.CharField(max_length=100)
-
-    def get_absolute_url(self):
-        if self.named_url:
-            return reverse(self.named_url)
-        return self.url
+    name = models.CharField('Название пункта меню', max_length=255)
+    url = models.CharField('URL', max_length=255, unique=True)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+    menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name = 'Пункт меню'
+        verbose_name_plural = 'Пункты меню'
 
     def __str__(self):
         return self.name
