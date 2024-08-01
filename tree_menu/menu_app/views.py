@@ -1,7 +1,4 @@
-# app/views.py
 from django.shortcuts import render
-from .models import Menu
-
 
 def index(request):
     context = {
