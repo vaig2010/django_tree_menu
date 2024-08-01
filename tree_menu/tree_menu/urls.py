@@ -28,6 +28,5 @@ urlpatterns = [
     path('services/seo/', views.seo, name='seo'),
     path('services/marketing/', views.marketing, name='marketing'),
     path('contact/', views.contact, name='contact'),
-    path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
-    path('<path:path>/', views.draw_menu, name='draw_menu'),
+    path('privacy-policy/', views.privacy_policy, name='privacy_policy')
 ] + debug_toolbar_urls()
