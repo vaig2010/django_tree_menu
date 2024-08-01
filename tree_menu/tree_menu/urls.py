@@ -16,7 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from menu_app import views
+from debug_toolbar.toolbar import debug_toolbar_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('', views.index, name='main_menu'),
+    path('home/', views.home, name='home'),
+    path('about/', views.about, name='about'),
+    path('home/', views.home, name='home'),
+    path('services/web-development/web-design/', views.web_design, name='web_design'),
+    path('services/seo/', views.seo, name='seo'),
+    path('services/marketing/', views.marketing, name='marketing'),
+    path('contact/', views.contact, name='contact'),
+    path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
+    path('<path:path>/', views.draw_menu, name='draw_menu'),
+] + debug_toolbar_urls()
