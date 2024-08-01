@@ -2,29 +2,58 @@
 from django.shortcuts import render
 from .models import Menu
 
+
 def index(request):
-    return render(request, 'menu_app/index.html', {'menus': Menu.objects.all()})
+    context = {
+        "title": "Index page",
+    }
+    return render(request, "menu_app/index.html", context)
+
 
 def home(request):
     context = {
-        'title': 'Home',
+        "title": "Home",
     }
-    return render(request, 'menu_app/home.html', context)
+    return render(request, "menu_app/home.html", context)
+
 
 def about(request):
-    return render(request, 'menu_app/about.html')
+    context = {
+        "title": "About page",
+    }
+    return render(request, "menu_app/about.html", context)
+
 
 def web_design(request):
-    return render(request, 'menu_app/web_design.html')
+    context = {
+        "title": "Web design",
+    }
+    return render(request, "menu_app/web_design.html", context)
+
 
 def seo(request):
-    return render(request, 'menu_app/seo.html')
+    context = {
+        "title": "SEO page",
+    }
+    return render(request, "menu_app/seo.html", context)
+
 
 def marketing(request):
-    return render(request, 'menu_app/marketing.html')
+    context = {
+        "title": "Marketing",
+    }
+    return render(request, "menu_app/marketing.html", context)
+
 
 def contact(request):
-    return render(request, 'menu_app/contact.html')
+    context = {
+        "title": "Contact",
+    }
+    return render(request, "menu_app/contact.html", context)
+
 
 def privacy_policy(request):
-    return render(request, 'menu_app/privacy_policy.html')
+    context = {
+        "title": "Privacy policy",
+    }
+    return render(request, "menu_app/privacy_policy.html", context)
