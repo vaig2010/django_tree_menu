@@ -1,12 +1,14 @@
-<ul>
+<div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
     {% for item in menu %}
-        <li>
-            <a href="{{ item.url }}">{{ item.name }}</a>
+        <li class="list-group-item">
+            <a href="{{ item.url }}"  class="nav-link">{{ item.name }}</a>
             {% if item.children %}
-                <ul class="submenu">
+                <ul class="submenu" >
                     {% include 'menu_app/menu.html' with menu=item.children %}
                 </ul>
             {% endif %}
         </li>
     {% endfor %}
-</ul>
+    </ul>
+</div>
